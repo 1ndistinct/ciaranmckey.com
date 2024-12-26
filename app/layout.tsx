@@ -8,18 +8,18 @@ import NavigationProgress from "./components/navigation-progress";
 
 export const metadata: Metadata = {
     title: {
-        default: "davidculemann.com",
-        template: "%s | davidculemann.com",
+        default: "ciaranmckey.com",
+        template: "%s | ciaranmckey.com",
     },
     description: "My personal website.",
     openGraph: {
-        title: "davidculemann.com",
+        title: "ciaranmckey.com",
         description: "My personal website.",
-        url: "https://davidculemann.com",
-        siteName: "davidculemann.com",
+        url: "https://ciaranmckey.com",
+        siteName: "ciaranmckey.com",
         images: [
             {
-                url: "https://davidculemann.com/og.png",
+                url: "https://ciaranmckey.com/og.png",
                 width: 1920,
                 height: 1080,
             },

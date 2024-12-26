@@ -28,21 +28,21 @@ export default function Home() {
             <div className="hidden w-screen h-px animate-glow md:block animate-fade-left bg-gradient-to-r from-foreground/0 via-foreground/50 to-foreground/0" />
             <Particles className="absolute inset-0 -z-10 animate-fade-in" quantity={100} />
             <h1 className="py-3.5 px-0.5 z-10 text-4xl text-transparent duration-1000 bg-foreground cursor-default text-edge-outline animate-title font-display sm:text-6xl md:text-9xl whitespace-nowrap bg-clip-text">
-                david culemann
+                Ciaran McKey
             </h1>
 
             <div className="hidden w-screen h-px animate-glow md:block animate-fade-right bg-gradient-to-r from-foreground/0 via-foreground/50 to-foreground/0" />
             <div className="my-16 text-center animate-fade-in">
                 <h2 className="text-sm text-muted-foreground px-4">
-                    Senior Software Engineer at{" "}
+                    Engineering Lead at{" "}
                     <Link
                         target="_blank"
                         href="https://darktrace.com"
                         className="underline duration-500 hover:text-foreground"
                     >
                         Darktrace
-                    </Link>{" "}
-                    Working Primarily on Cloud Security.
+                    </Link>{" "}.
+                    Launched Cloud Security and have now expanded into high impact cross product projects.
                 </h2>
             </div>
         </div>

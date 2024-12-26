@@ -8,21 +8,21 @@ import { Card } from "../components/card";
 const socials = [
     {
         icon: <Github size={20} />,
-        href: "https://github.com/davidculemann",
+        href: "https://github.com/thewatergategroups",
         label: "GitHub",
-        handle: "davidculemann",
+        handle: "Watergate Groups Org",
     },
     {
         icon: <Linkedin size={20} />,
-        href: "https://www.linkedin.com/in/david-culemann/",
+        href: "https://www.linkedin.com/in/ciaran-mckey/",
         label: "LinkedIn",
-        handle: "davidculemann",
+        handle: "ciaranmckey",
     },
     {
         icon: <Mail size={20} />,
-        href: "mailto:davidculemann@gmail.com",
+        href: "mailto:ciaranmckey@gmail.com",
         label: "Email",
-        handle: "davidculemann@gmail.com",
+        handle: "ciaranmckey@gmail.com",
     },
 ];
 

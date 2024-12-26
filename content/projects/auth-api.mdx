@@ -1,0 +1,30 @@
+---
+title: "Auth API"
+description: An oAuth2 and JWT based authentication API 
+date: "2023-12-23"
+logo: carno-logo.avif
+repository: https://github.com/thewatergategroups/authapi/tree/dev
+repositoryId: R_kgDONbPPaA
+repositoryName: ciaranmckey/ch-comments
+---
+
+I built a oAuth2 and JWT based authentication API from scratch to better understand how authentication works at its lowest level.
+It was built to run in Kubernetes alongside [oAuth2 Proxy](https://github.com/oauth2-proxy/oauth2-proxy) for session management.
+The aim was to bring authentication at the ingress level to all other applications running in the cluster. 
+This application is built to specification so that it works with any application that can connect to custom OIDC providers.
+
+This was built to be used by individuals ( Users ) and machines ( Clients ). The features thus include the creation and management of 
+Users, Clients, Scopes and Roles.
+
+Implemented OIDC flows:
+ - Authorization Code Flow
+ - Implicit Flow 
+ - Password Flow
+ - Client Credentials Flow 
+ - Refresh Token Flow
+
+I also spent time creating an Admin UI which allows a user to view their profile, 
+and if they have permissions to add, remove and update Users, Clients, Roles and Scopes.
+This was built with React and TypeScript, using Mantine components. The UI code can be found [here](https://github.com/thewatergategroups/adminui)
+
+

@@ -7,14 +7,20 @@ published: true
 url: https://darktrace.com/products/cloud
 professional: true
 repositoryId: R_kgDONbPQYw
-repositoryName: davidculemann/dc-comments
+repositoryName: ciaranmckey/dc-comments
 ---
 
-Darktrace /CLOUD is a comprehensive cybersecurity platform designed to help organizations secure and manage their cloud environments. The core principle of operation involves enumerating all cloud assets misconfigurations such as S3 buckets with overly permissive access. It offers tools to customize security postures, guide the user through remediation steps, and streamline workflows with features like one-click ticket creation and autononous response.
+Darktrace /CLOUD is a comprehensive cybersecurity platform designed to help organizations secure and manage their cloud environments. 
+The core principle of operation involves enumerating all cloud assets misconfigurations such as S3 buckets with overly permissive access. 
+It offers tools to customize security postures, guide the user through remediation steps, and streamline workflows with features like one-click ticket creation and autononous response.
 
-My current role is as leader UI developer for Darktrace /CLOUD, which I have overseen from the very start, through first release, and currently working on a wide range of cloud innovations.
+My role on this project was to build the initial MVP, and following that build it out to a production ready state. We started with 3 people ( 1 DevOps, 1 Frontend and 1 Backend ) and now the team is made up of roughly 12. 
+This project was built cloud native on Kubernetes, using stateless microservices and an event driven design.
+The cloud provider of choice is AWS, we make use of their managed control plane ( EKS ), RDS, ElastiCache, Neptune, SNS, SQS, IAM, Secrets manager and many more services to bring this project to life.
+
+Apart from writing the business logic of the application, I also built out the product provisioning pipelines as well as the authentication mechanisms with AWS and other Darktrace services.
 
 <figure>
     <img src="/images/cloud.png" alt="Darktrace /CLOUD" />
-    <figcaption>Real-time visibility into Azure assets and architectures, built with Cytoscape.js.</figcaption>
+    <figcaption>Real-time visibility into Azure assets and architectures.</figcaption>
 </figure>

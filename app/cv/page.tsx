@@ -21,14 +21,14 @@ export default function CVPage() {
             <div className="container mx-auto px-4 pt-24 pb-12">
                 <div className="max-w-4xl mx-auto flex flex-col gap-4 items-center">
                     <Button asChild>
-                        <a href="/cv-david-culemann.pdf" download className="flex items-center gap-2 px-4 py-2 w-fit">
+                        <a href="/cv-ciaran-mckey.pdf" download className="flex items-center gap-2 px-4 py-2 w-fit">
                             <Download size={16} />
                             Download CV
                         </a>
                     </Button>
                     <div className="relative w-full aspect-[1/1.414]">
                         <object
-                            data="/cv-david-culemann.pdf#view=FitH&toolbar=0&navpanes=0&scrollbar=0"
+                            data="/cv-ciaran-mckey.pdf#view=FitH&toolbar=0&navpanes=0&scrollbar=0"
                             className={cn(
                                 "absolute inset-0 w-full h-full border-none",
                                 mounted && theme === "dark" ? "[filter:invert(1)_hue-rotate(180deg)]" : ""

@@ -1,7 +1,7 @@
 <div align="center">
-    <a href="https://davidculemann.com"><h1 align="center">davidculemann.com</h1></a>
+    <a href="https://ciaranmckey.com"><h1 align="center">ciaranmckey.com</h1></a>
 
-My personal website, built with [Next.js](https://nextjs.org/), [Tailwind CSS](https://tailwindcss.com/), [Upstash](https://upstash.com?ref=davidculemann.com), [Contentlayer](https://www.contentlayer.dev/) and deployed to [Vercel](https://vercel.com/).
+My personal website, built with [Next.js](https://nextjs.org/), [Tailwind CSS](https://tailwindcss.com/), [Upstash](https://upstash.com?ref=ciaranmckey.com), [Contentlayer](https://www.contentlayer.dev/) and deployed to [Vercel](https://vercel.com/).
 
 </div>
 
