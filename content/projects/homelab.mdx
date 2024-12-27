@@ -1,20 +1,82 @@
 ---
 title: "Homelab"
-description: A baremetal kubernetes cluster running at home, managed my ArgoCD and FluxCD
+description: A baremetal kubernetes cluster running at home.
 date: "2023-07-09"
-repository: https://github.com/thewatergategroups/llama
 repositoryId: R_kgDOJRAXjw
 repositoryName: ciaranmckey/GeoGenius-FE
 logo: geogenius-logo.svg
 ---
 
-From using a single old laptop with linux installed to having 5 servers connected together in a cluster using microk8s.
+From using a single old laptop with linux installed to having 5 servers connected together in a Kubernetes cluster.
 The goal was to have a stable and long running development environments for new projects to be deployed and made public in as short a time as possible.
  
+#### The stack
+
+The cluster was hosted across 5 linux servers and originally created with microk8s. 
+
+##### CI\CD and Infrastructure
+
+To provision the cluster and all the applications I used a hybrid approach. 
+For all fundamental operational applications within the cluster, I provisioned them through [FluxCD](https://fluxcd.io/).
+This includes ArgoCD, which I then used to provision my "Business logic" applications.  
+
+The repository that I provisioned from can be found [here](https://github.com/thewatergategroups/fluxcd)
+
+For the small amount of infrastructure I needed, including an S3 bucket for backups, Route53 resources for DNS and IAM roles for general access requirements, 
+I used terragrunt. 
+
+The infeastructure repository can be found [here](https://github.com/thewatergategroups/infrastructure)
+
+For all my repositories, I used Github actions to build and push new docker images, and in the case of infrastructure, to apply the changes within AWS.
+
+##### Secret management
+
+To ensure secrets were never being exposed in the code. For any secrets that were needed during provisioning I employed [Sealed Secrets](https://fluxcd.io/flux/guides/sealed-secrets/) 
+ ( This uses a certificate stored in the cluster to encrypt the secret values which you can the commit to git, the cluster will then decrypt them on provisioning ).
+
+For "Business Logic" applications I used [External Secrets](https://external-secrets.io/latest/) with AWS Parameter Store as a backend. This allowed me to dynamically update secrets directly in AWS for my applications
+
+##### External DNS
+
+Initially I used AWS Route53 with an A name record mapped to my home's IP address. Due to the fact that I had a dynamic IP address, 
+I wrote a script that ran on a cronjob within the cluster periodically to update the A name record if my home IP had changed.
+This approach required me to use [MetalLB](https://metallb.io/) and to port forward the assigned IP addresses for cluster load balancing.
+I also used [ExternalDNS](https://github.com/kubernetes-sigs/external-dns) to automatically create subdomain C-Name records when creating an ingress resource. 
+This allowed me to automatically expose new applications to the internet on provisioning.     
+
+I then moved on to using CloudFlare Tunnels. This works by running a program on the servers which acts as a reverse proxy to cloudflare's backbone, 
+exposing your apps to the internet. This required less management and is more secure since it doesn't require MetalLB or port forwarding through the router.  
+The one down side to this was that I needed to manually add the subdomains and assign them to the application ports on my local machine, so I couldn't use ExternalDNS.
 
 
+##### Storage and Backup
+
+For backups, I used [Velero](https://velero.io/) with S3 as the backend. This runs once per day and does an incremental backup to reduce the amount of data stored per day.
+
+For storage within the cluster, I used [CephFS](https://docs.ceph.com/en/reef/cephfs/) which acts as a distrubuted filesystem. 
+Replicating data across your nodes to ensure redundency in the case that any of your nodes go offline.
 
 
+#### Observability and Scaling
 
+To monitor the applications running in the cluster, I deployed [Prometheus](https://prometheus.io/) to gather metrics and [Grafana](https://github.com/grafana/grafana) for dashboards as a first stepping stone. This would allow me to monitor application health, 
+and with the use of [Keda](https://keda.sh/) would allow me to autoscale my applications off of custom metrics. 
+To compliment this, I use [Loki](https://github.com/grafana/loki) for logging, and [OpenTelementry](https://opentelemetry.io/) for tracing.
+For network observability and control, I used the [Istio Service Mesh](https://istio.io/).
 
+##### Business Logic applications
 
+What was all this work for? What did I deploy in this cluster? 
+
+Here are a few things:
+
+1. Auth API - which I speak about in a different project. I used this along with [oAuth2-Proxy](https://github.com/oauth2-proxy/oauth2-proxy) to provide all my internet facing applications with authentication.
+2. The Admin UI - This provided a portal for adding, removing and editing Users, Roles, Scopes and Clients.
+3. Trading Bot - Which I speak about in a different project. This was running my trading bot so that it could trade 24/7 with minimal downtime. I also built a small UI for this application to gain insights.
+4. A Minecraft Server - Why? for fun with friends.
+5. Redis as a key value store for my other applications
+6. Postgres as a backend for my other applications - Running this in the cluster is not ideal but I didn't need anything fancier.
+7. Pypi Repostory to host my personal python packages.
+8. Wireguard as a self hosted VPN.
+
+Wireguard I replaced with cloudflare free [WARP VPN](https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp/download-warp/) 
