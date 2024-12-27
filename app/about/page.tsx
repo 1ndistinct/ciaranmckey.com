@@ -98,6 +98,8 @@ export default function About() {
                                 Lets not neglect the soft skills since they are the true value of an engineer and manager.
                                 I devote a good portion of my time reading books and watching content to help improve my abilities as a manager. 
                                 Some of my favorite books that I have read as of late include.
+                            </p>
+                            <p className="text-muted-foreground">
                                 <ul>
                                     <li>- Diary Of a CEO - Stephen Bartlett</li>
                                     <li>- Lean Startup - Eric Ries</li>

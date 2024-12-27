@@ -2,11 +2,12 @@
 title: "Trading Bot"
 description: An algorithmic trading bot built on Alpaca API
 date: "2023-07-09"
-repository: https://github.com/thewatergategroups/llama
-repositoryId: R_kgDOJRAXjw
-repositoryName: ciaranmckey/GeoGenius-FE
-logo: geogenius-logo.svg
+repository: thewatergategroups/llama
+logo: alpaca.jpg
+professional: false
+published: true
 ---
+
 I made the trading bot to learn more about algorithmic trading and the stock market in general.
 The trading bot - dupped Llama is built on [Alpaca Trading](https://alpaca.markets/) and made up of 5 major components
 
@@ -25,7 +26,7 @@ The API serves information and allows to perform actions on all aspects of the b
 2. Positions - create, cancel, view
 3. Account - view
 4. Assets ( what we are trading / what we can trade ) - create, delete, view
-5. Qoutes - view
+5. quotes - view
 6. Historic data - view / graph
 7. News - view
 8. Backtesting - view, create
@@ -41,20 +42,20 @@ At the end of the simulation - The value of the stocks + money left to trade wit
 
 Backtests can be started and tracked through the API. When a backtest has started, the status is set to inprogress, if it fails, the error is saved and when its complete, you can view the results.
 
-### The stragedy framework
+#### The stragedy framework
 
 The strategy framework was designed in a way that it could be easily adapted, replicated and expanded upon. 
 Although default strategies are defined in code. The framework was designed so that new strategies can be quickly and easily implemented through JSON. 
 This allows for quick itteration of strategies, which, combined with the allowance of multiple strategies to be run at once or in different situations gives a very flexible approach to algorithmic trading.
 
 Assuming specified key metrics are present ( such as Volume Weighted Average Price - VWAP ) you can built strategies that use any combination of conditions for these metrics.
-This includes AND and OR conditions. For instance, this means we can have a strategy that requires a `positive vwap crossover` and a `vwap slope > 0.05` to buy, and a `negative vwap` slope to sell whilst also adhering to a `stop loss` / `take profit`, `max/ min quantities`, and other basic conditions of buying and selling.
+This includes AND and OR conditions. For instance, this means we can have a strategy that requires a "positive vwap crossover" and a "vwap slope > 0.05" to buy, and a "negative vwap" slope to sell whilst also adhering to a "stop loss" / "take profit", "max/ min quantities", and other basic conditions of buying and selling.
 
 These strategies not only look at the minute bar at hand but also have access to historic data for a given stock and potentially future forecasts.
 
 #### The datastream
 
-This is a websocket connection which the bot subscribes to on startup. It will specify which assets it wants information on `bars`, `trades` and `qoutes` for.
+This is a websocket connection which the bot subscribes to on startup. It will specify which assets it wants information on "bars", "trades" and "quotes" for.
 The bot will then listen for activity. When an event is received, the bot will decide what to do. For now, the limited scope of the bot means that only the bars are acted upon. 
 When a bar comes in, the bar is run through all active strategies which will determine whether an asset is bought, sold or held. All 3 event types will be stored in postgres for further analysis later on.
 
@@ -64,9 +65,7 @@ This is also a websocket connection which the bot subscribes to on startup. It w
 Currently these trade updates are stored in postgres for future analysis. 
 
 #### Future improvements
+
 1. Read market sentiment to help determine which assets should be traded at any one point in time.
-2. Use qoutes and trade events to help determine the market interest in a certain stock and predict future behaviour in the short term.
+2. Use quotes and trade events to help determine the market interest in a certain stock and predict future behaviour in the short term.
 3. Add a UI to the backtesting framework and strategy builder to increase speed of itteration.
-
-
-

@@ -8,15 +8,15 @@ import { Card } from "../components/card";
 const socials = [
     {
         icon: <Github size={20} />,
-        href: "https://github.com/thewatergategroups",
+        href: "https://github.com/orgs/thewatergategroups/repositories",
         label: "GitHub",
-        handle: "Watergate Groups Org",
+        handle: "thewatergategroups",
     },
     {
         icon: <Linkedin size={20} />,
         href: "https://www.linkedin.com/in/ciaran-mckey/",
         label: "LinkedIn",
-        handle: "ciaranmckey",
+        handle: "ciaran-mckey",
     },
     {
         icon: <Mail size={20} />,
