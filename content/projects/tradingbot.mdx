@@ -8,24 +8,65 @@ repositoryName: ciaranmckey/GeoGenius-FE
 logo: geogenius-logo.svg
 ---
 I made the trading bot to learn more about algorithmic trading and the stock market in general.
-The trading bot - dupped Llama is made up of 4 major components
+The trading bot - dupped Llama is built on [Alpaca Trading](https://alpaca.markets/) and made up of 5 major components
 
 1. The API
 2. The tradestream
 3. The datastream
-4. The Backtesting framework
+4. The backtesting framework
+6. The stragedy framework
 
 ### How does it work? 
 
 #### The API
-This holds information on 
+The API serves information and allows to perform actions on all aspects of the bot. These include
 
+1. Orders - create, cancel, view
+2. Positions - create, cancel, view
+3. Account - view
+4. Assets ( what we are trading / what we can trade ) - create, delete, view
+5. Qoutes - view
+6. Historic data - view / graph
+7. News - view
+8. Backtesting - view, create
+9. Strategies - view, create, delete, update
 
-#### The tradestream
+#### The Backtesting Framework
 
+The backtesting framework is custom made and allows for any combination of strategies, assets and time periods to be used.
+
+The backtester, when triggered will pull all historic data within the specified time period for a stock - pulling minute bars ( which is what are traded on ), then run each bar, one minute at a time from start to end through the specified strategies. 
+The strategies will make decisions on whether to buy, sell or hold stocks within defined limits and the action is recorded. 
+At the end of the simulation - The value of the stocks + money left to trade with are displayed to the user so they can see whether or not their strategy made money. 
+
+Backtests can be started and tracked through the API. When a backtest has started, the status is set to inprogress, if it fails, the error is saved and when its complete, you can view the results.
+
+### The stragedy framework
+
+The strategy framework was designed in a way that it could be easily adapted, replicated and expanded upon. 
+Although default strategies are defined in code. The framework was designed so that new strategies can be quickly and easily implemented through JSON. 
+This allows for quick itteration of strategies, which, combined with the allowance of multiple strategies to be run at once or in different situations gives a very flexible approach to algorithmic trading.
+
+Assuming specified key metrics are present ( such as Volume Weighted Average Price - VWAP ) you can built strategies that use any combination of conditions for these metrics.
+This includes AND and OR conditions. For instance, this means we can have a strategy that requires a `positive vwap crossover` and a `vwap slope > 0.05` to buy, and a `negative vwap` slope to sell whilst also adhering to a `stop loss` / `take profit`, `max/ min quantities`, and other basic conditions of buying and selling.
+
+These strategies not only look at the minute bar at hand but also have access to historic data for a given stock and potentially future forecasts.
 
 #### The datastream
 
+This is a websocket connection which the bot subscribes to on startup. It will specify which assets it wants information on `bars`, `trades` and `qoutes` for.
+The bot will then listen for activity. When an event is received, the bot will decide what to do. For now, the limited scope of the bot means that only the bars are acted upon. 
+When a bar comes in, the bar is run through all active strategies which will determine whether an asset is bought, sold or held. All 3 event types will be stored in postgres for further analysis later on.
 
-#### The backtesting framework
+#### The tradestream
+
+This is also a websocket connection which the bot subscribes to on startup. It will specify which assets it wants the trade event information for. this includes new trades, filled trades, partially filled trades and cancelled trades. 
+Currently these trade updates are stored in postgres for future analysis. 
+
+#### Future improvements
+1. Read market sentiment to help determine which assets should be traded at any one point in time.
+2. Use qoutes and trade events to help determine the market interest in a certain stock and predict future behaviour in the short term.
+3. Add a UI to the backtesting framework and strategy builder to increase speed of itteration.
+
+
 
