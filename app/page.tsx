@@ -34,15 +34,22 @@ export default function Home() {
             <div className="hidden w-screen h-px animate-glow md:block animate-fade-right bg-gradient-to-r from-foreground/0 via-foreground/50 to-foreground/0" />
             <div className="my-16 text-center animate-fade-in">
                 <h2 className="text-sm text-muted-foreground px-4">
+                    Built Darktrace Cloud Security
+                    | 
+                    Launched to market
+                    |
+                    Moved into management
+                    <br/>
                     Engineering Lead at{" "}
                     <Link
                         target="_blank"
                         href="https://darktrace.com"
                         className="underline duration-500 hover:text-foreground"
                     >
-                        Darktrace
-                    </Link>{" "}.
-                    Launched Cloud Security and have moved into management to lead high impact cross product projects. I have 4 patents to my name and counting. 
+                        Darktrace.
+                    </Link>{" "}
+                    |
+                    4 patents and counting. 
                 </h2>
             </div>
         </div>
