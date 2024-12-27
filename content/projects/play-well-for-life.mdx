@@ -10,13 +10,40 @@ professional: true
 published: true
 ---
 
-From using a single old laptop with linux installed to having 5 servers connected together in a cluster using microk8s.
-The goal was to have a stable and long running development environments for new projects to be deployed and made public in as short a time as possible.
- 
+Play well for life was my first job out of university. It was a startup that has since gone under. 
+I joined the company because I believed in the purpose despite the low pay and benefits. 
+They focused on gamifying emotional regulation and other mental health related skills for kids, with the purpose of teaching kids skills they may not learn at home in a way that doesn't feel like school.
+
+### What did we do? 
+
+While I was there, we were working on a mish-mash of different projects, which I oversay they tech for. 
 
 
+#### AR board game. This had 3 main components. 
 
+1. The board itself, which had pins on the squares to relay information about which player was on which square.
+2. The server which would get information from the board, and adjust the game state based on the information. 
+3. The mobile app which would call the server to retrieve the game state and decide what to display in AR from it.
 
+I worked on the server itself, which was a python programme running on a raspberry pi. 
+The pi's pins connected to the board to receive the board information.
+A listener would wait for board input, and then adjust the game state and play audio if applicable based on the move made.
+The raspberry pi was also hosting a flask API server which hosted the game state for the mobile app.
 
+#### A second project we were working on was the backend for an online mobile game. 
 
+This required me to design tables in a database and host an API to serve this data in Java.
 
+#### The last relevant project, and probably the biggest was was creating containerised and modded minecraft servers.
+
+The aim of this was to create an interactive learning experience in all the foundantional subjects at school. 
+Specifically focusing on younger kids. We had the concept of lessons, in which we would lead players through a story in which they had to answer multiple choice questions relevant to the topic. Their pace, and accuracy would be recorded and rewarded. 
+These stats would then be used to inform parents about what kids were struggling with and offer suggestions for improvement. Incentive for the players to do lessons included giving them precious materials and free time to build and play traditional minrecraft.  
+
+The pieces of the puzzle that I had to make were.
+
+1. A [bubble.io](https://bubble.io/) website for user sign-ups and purchases of the servers
+2. A provisioning pipeline to [OVH](https://www.ovhcloud.com/en-gb/) where we would spin up a container with our custom minecraft server.
+3. A BungeeCord server and custom authentication which allowed us to route all users through a single URL to their respective servers in a secure manner. 
+4. The minecraft mod ( written in Java ), which included a relational database for tracking stats and action triggers to create custom actions with existing minecraft UI elements
+5. A containerised version of the minecraft server to deploy.  
