@@ -42,7 +42,7 @@ export default function Home() {
                     >
                         Darktrace
                     </Link>{" "}.
-                    Launched Cloud Security and have now expanded into high impact cross product projects.
+                    Launched Cloud Security and have moved into management to lead high impact cross product projects. I have 4 patents to my name and counting. 
                 </h2>
             </div>
         </div>

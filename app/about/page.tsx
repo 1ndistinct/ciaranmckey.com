@@ -74,7 +74,7 @@ export default function About() {
                                 >
                                     Darktrace /CLOUD
                                 </Link>
-                                . Since then I been given a team with the MO of helping to modernising our tech stack. 
+                                . Since then I have been given a team with the MO of helping to modernise our tech stack. 
                                 This means deploying more of our applications in highly distributed environments, 
                                 with microservice based architectures. 
                                 It also means bringing disparate services across the company which aim to solve the same problem, 
@@ -83,19 +83,18 @@ export default function About() {
                             </p>
                             <p className="text-muted-foreground">
                                 I love learning and building my skills in my free time. 
-                                You can find some featured projects I've worked on to expand my technical skills in 
-                                in the{" "}
+                                You can find some featured projects I've worked on to expand my technical skills on 
+                                the{" "}
                                 <Link
                                     href="/projects"
                                     className="underline decoration-primary underline-offset-4 hover:text-primary transition-colors"
                                 >
                                     projects
                                 </Link>{" "}
-                                page. You can also leave a comment on each project with the embedded GitHub discussions
-                                powered by Giscus if you have any questions or feedback.
+                                page.
                             </p>
                             <p className="text-muted-foreground">
-                                Lets not neglect the soft skills since they are the true value of an engineer and manager.
+                                Lets not neglect the soft skills since they are an important aspect of being an engineer and manager.
                                 I devote a good portion of my time reading books and watching content to help improve my abilities as a manager. 
                                 Some of my favorite books that I have read as of late include.
                             </p>
@@ -113,7 +112,7 @@ export default function About() {
                                 </ul>
                             </p>
                             <p className="text-muted-foreground">
-                                Outside of coding, I spend my time hiking, bouldering, snow boarding and travelling 
+                                Outside of coding, I spend my time hiking, bouldering, snow boarding and travelling.
                             </p>
                         </section>
                         <section className="mb-8">
