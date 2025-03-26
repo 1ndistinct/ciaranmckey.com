@@ -1,0 +1,30 @@
+---
+title: "Info Vault"
+description: RAG based AI Agent for Document Analysis
+date: "2025-01-01"
+logo: bot.png
+published: true
+repository: thewatergategroups/info-vault
+---
+
+I am building an AI Agent for centralised document storage and analysis, storage and analysis. 
+The aim of this system is to fetch and centralise personal documents from popular sources and then offer an AI agent that can provide insights, aggregation, query and manipulation operations on the documents themselves.
+Such sources include Gmail, Dropbox, Google Drive, DocuSign, and will expand over time. 
+
+Features:
+- Multitenant service, offering authentication with OAuth2 ( Currently only google ) or creation of a user. 
+- Object Storage and retrieval for easy access to a centralised storage locations
+- Easy to use UI to interface with the LLM and view / query / download your documents
+- ChatGPT or Ollama Chat completions and embeddings
+- Chat sessions, history and context retreival
+- Support for text, PDF, Docx, JPG, PNG and many other file formats
+- Asyncronous document processing to ensure backpressure is applied at high loads.
+
+Technologies:
+
+- Python - FastAPI, Alembic, SqlAlchemy, LangChain, FastAPI-Users, Boto3
+- ReactJS for Frontend
+- Postgres and PGVector for SQL and embeddings storage
+- Minio / S3 for object storage of the documents
+- Redis for caching and queuing of documents to process
+- Golang for document collection CLI - Optionally done in python on a cronjob with pre-authed User credentials

@@ -4,6 +4,9 @@ description: A baremetal kubernetes cluster running at home.
 date: "2023-07-09"
 logo: treehouse.jpg
 ---
+The FluxCD repository can be found [here](https://github.com/thewatergategroups/fluxcd)
+
+The Terragrunt repository can be found [here](https://github.com/thewatergategroups/infrastructure)
 
 From using a single old laptop with linux installed to having 5 servers connected together in a Kubernetes cluster.
 The goal was to have a stable and long running development environments for new projects to be deployed and made public in as short a time as possible.
@@ -18,12 +21,10 @@ To provision the cluster and all the applications I used a hybrid approach.
 For all fundamental operational applications within the cluster, I provisioned them through [FluxCD](https://fluxcd.io/).
 This includes ArgoCD, which I then used to provision my "Business logic" applications.  
 
-The repository that I provisioned from can be found [here](https://github.com/thewatergategroups/fluxcd)
 
 For the small amount of infrastructure I needed, including an S3 bucket for backups, Route53 resources for DNS and IAM roles for general access requirements, 
 I used terragrunt. 
 
-The infeastructure repository can be found [here](https://github.com/thewatergategroups/infrastructure)
 
 For all my repositories, I used Github actions to build and push new docker images, and in the case of infrastructure, to apply the changes within AWS.
 
